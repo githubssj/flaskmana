@@ -5,7 +5,6 @@ __pycache__/
 resource/
 
 # front
-.DS_Store
 front/vue-element-admin-i18n.zip
 
 front/vue-element-admin-i18n/node_modules/
