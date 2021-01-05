@@ -1,5 +1,32 @@
-flaskdemovenv/
+fmvenv/
 .idea/
 .DS_Store
 __pycache__/
 resource/
+
+# front
+.DS_Store
+front/vue-element-admin-i18n.zip
+
+front/vue-element-admin-i18n/node_modules/
+front/vue-element-admin-i18n/dist/
+front/vue-element-admin-i18n/npm-debug.log*
+front/vue-element-admin-i18n/yarn-debug.log*
+front/vue-element-admin-i18n/yarn-error.log*
+front/vue-element-admin-i18n/**/*.log
+
+front/vue-element-admin-i18n/tests/**/coverage/
+front/vue-element-admin-i18n/tests/e2e/reports
+front/vue-element-admin-i18n/selenium-debug.log
+
+# Editor directories and files
+front/vue-element-admin-i18n/.idea
+front/vue-element-admin-i18n/.vscode
+front/vue-element-admin-i18n/*.suo
+front/vue-element-admin-i18n/*.ntvs*
+front/vue-element-admin-i18n/*.njsproj
+front/vue-element-admin-i18n/*.sln
+front/vue-element-admin-i18n/*.local
+
+front/vue-element-admin-i18n/package-lock.json
+front/vue-element-admin-i18n/yarn.lock
