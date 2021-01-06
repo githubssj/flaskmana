@@ -3,6 +3,7 @@ import settings
 from flask_migrate import Migrate, Manager, MigrateCommand
 
 from exts import db
+from apps.models.user_model import User
 
 app = create_app(settings.DevelopmentConfig)
 manager = Manager(app=app)
