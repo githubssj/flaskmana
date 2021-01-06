@@ -30,3 +30,4 @@ class My_op_db_data:
             db.session.add(self)
 
 db = SQLAlchemy()
+
