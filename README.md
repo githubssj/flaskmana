@@ -25,3 +25,8 @@ python manage.py db history
 输出格式：<base> ->  版本号 (head), initial migration  
 回滚到指定版本  
 python manage.py db downgrade 版本号  
+
+
+# 安装 pip install flask-jwt-extended  
+# 安装 pip install flask-restful  
+
