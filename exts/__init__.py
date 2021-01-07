@@ -24,10 +24,22 @@ class SQLAlchemy(BaseSQLAlchemy):
             raise ie
             # return ie
 
+
+db = SQLAlchemy()
+
+
+# def init_model(app):
+#     db.init_app(app=app)
+
+
 class My_op_db_data:
     def add_db_data(self):
         with db.auto_commit_db():
             db.session.add(self)
 
-db = SQLAlchemy()
 
+
+
+# 初始化 扩展
+def init_exts(app):
+    db.init_app(app=app)

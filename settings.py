@@ -1,5 +1,5 @@
-
-def get_db_info(dbinfo:dict):
+# 获得SQLALCHEMY_DATABASE_URI的字符串
+def get_db_info(dbinfo: dict):
     engine = dbinfo.get("ENGINE") or "mysql"
     driver = dbinfo.get("DRIVER") or "pymysql"
     user = dbinfo.get("USER") or ""
@@ -10,6 +10,8 @@ def get_db_info(dbinfo:dict):
     charset = dbinfo.get("CHARSET")
     return "{}+{}://{}:{}@{}:{}/{}?charset={}".format(engine, driver, user, password, host, port, dbname, charset)
 
+
+# 基本配置
 class Config:
     DEBUG = False
     TESTING = False
@@ -20,6 +22,7 @@ class Config:
     SESSION_TYPE = "redis"
     SESSION_USE_SINER = True  # 对cookie中session_id进行隐藏处理 加密混淆
     PERMANENT_SESSION_LIFETIME = 20  # session数据的有效期, 单位秒
+
 
 # 开发环境
 class DevelopmentConfig(Config):
@@ -69,6 +72,6 @@ class TestingConfig(Config):
 
 # 参数字典
 config_map = {
-    'develop' : DevelopmentConfig,
-    'product' : ProductionConfig
+    'develop': DevelopmentConfig,
+    'product': ProductionConfig
 }

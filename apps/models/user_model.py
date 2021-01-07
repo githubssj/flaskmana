@@ -1,4 +1,4 @@
-from exts import db, My_op_db_data
+from exts import My_op_db_data, db
 
 
 class User(db.Model, My_op_db_data):
