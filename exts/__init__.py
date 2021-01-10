@@ -1,6 +1,7 @@
 # from flask_sqlalchemy import SQLAlchemy
 #
 # db = SQLAlchemy()
+from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy as BaseSQLAlchemy
 from contextlib import contextmanager
 from sqlalchemy.exc import IntegrityError
@@ -43,3 +44,4 @@ class My_op_db_data:
 # 初始化 扩展
 def init_exts(app):
     db.init_app(app=app)
+    # Session(app=app)

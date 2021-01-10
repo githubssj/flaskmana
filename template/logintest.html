@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoginTest</title>
+</head>
+<body>
+<form action="{{ url_for('logintest.index') }}" method="post">
+    <span>用户名:</span>
+    <input type="text" name="username" placeholder="请输入用户名">
+    <br>
+    <button>登录</button>
+
+</form>
+
+</body>
+</html>

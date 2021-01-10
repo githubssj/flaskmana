@@ -15,13 +15,16 @@ def get_db_info(dbinfo: dict):
 class Config:
     DEBUG = False
     TESTING = False
-    SECRET_KEY = "sdfsdfsdf"
+    SECRET_KEY = "sdfsdfsdf"   # cookie和session会用到
+    SESSION_TYPE= "redis"  # 去ext中注册
     # SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost:3306/mydb"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     # flask-session 配置
     SESSION_TYPE = "redis"
     SESSION_USE_SINER = True  # 对cookie中session_id进行隐藏处理 加密混淆
     PERMANENT_SESSION_LIFETIME = 20  # session数据的有效期, 单位秒
+    # 设置session的默认存储名字, 存储的session的name就从session-> 变为ssj
+    SESSION_COOKIE_NAME = "ssj"
 
 
 # 开发环境
