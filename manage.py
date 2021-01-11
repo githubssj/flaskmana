@@ -4,6 +4,7 @@ from flask_migrate import Migrate, Manager, MigrateCommand
 
 from exts import db
 from apps.models.user_model import User
+from apps.models.animaldogcat_model import Animal, Dog, Cat
 
 app = create_app(settings.DevelopmentConfig)
 manager = Manager(app=app)

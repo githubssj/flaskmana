@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get Cats</title>
+</head>
+<body>
+    <p>types是: {{ types }}</p>
+    <ul>
+        {% for cat in cats %}
+            <li>{{ cat.a_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

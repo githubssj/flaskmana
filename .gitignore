@@ -29,3 +29,4 @@ front/vue-element-admin-i18n/*.local
 
 front/vue-element-admin-i18n/package-lock.json
 front/vue-element-admin-i18n/yarn.lock
+/utils/dump.rdb

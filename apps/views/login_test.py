@@ -12,7 +12,7 @@ def index():
         response = Response("登录成功 %s " % username)
         # return "Login Test Index:  %s" % username
         # 存储到cookies中
-        # response.set_cookie("username", username)
+        response.set_cookie("username", username)
         # 存储到session中
         session['username'] = username
         return response

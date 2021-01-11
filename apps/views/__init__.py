@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 
+from apps.views.db_op_demo import db_op
 from apps.views.login_register_view import reg_bp, login_bp
 from apps.views.db_op_view import opdb_bp
 from apps.views.login_test import loginT_bp
@@ -14,6 +15,7 @@ def init_view(app):
     app.register_blueprint(login_bp)
     app.register_blueprint(opdb_bp)
     app.register_blueprint(loginT_bp)
+    app.register_blueprint(db_op)
 
 
 
