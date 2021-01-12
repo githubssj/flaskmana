@@ -79,7 +79,11 @@ app 和 蓝图 都有
     request  
     session  
     g  
+        跨函数传递数据  
+        - 间接传递数据  
     config  
         使用config
-        current_app.config 一定是在项目启动之后用  
+        current_app.config 一定是在项目启动之后用  import flask.current_app  
+
+        
         
