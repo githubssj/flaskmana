@@ -67,3 +67,19 @@ SQLALCHEMY_TRACK_MODIFICATIONS	如果设置成 True (默认情况)，Flask-SQLAl
     @cache.cached(timeout=50)  
     def index():  
         return render_template('index.html')  
+        
+# 钩子函数  
+- 面向切面编程  
+- 动态介入请求流程  
+- before_request  
+- after_request  
+app 和 蓝图 都有  
+       
+# 4个内置对象
+    request  
+    session  
+    g  
+    config  
+        使用config
+        current_app.config 一定是在项目启动之后用  
+        
