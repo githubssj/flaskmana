@@ -5,11 +5,61 @@
     <title>get Cats</title>
 </head>
 <body>
-    <p>types是: {{ types }}</p>
+<p>types是: {{ types }}</p>
+<br>
+<br>
+<p>types是: {{ cats }}</p>
+<ul>
+    {% for cat in cats %}
+        <li>{{ cat.a_name }}</li>
+    {% endfor %}
+</ul>
+<p>catsall 的 types是: {{ catslt }}</p>
+<ul>
+    {% for cat in catslt %}
+        <li>{{ cat.a_name }}</li>
+    {% endfor %}
+</ul>
+
+<p>catsall 的 types是: {{ catsbijiao }}</p>
+<ul>
+    {% for cat in catsbijiao %}
+        <li>{{ cat.a_name }}</li>
+    {% endfor %}
+</ul>
+
+<div>
+    <p>分页信息</p>
     <ul>
-        {% for cat in cats %}
-            <li>{{ cat.a_name }}</li>
+        {% for dog in dogs %}
+            <li>{{ dog.a_name }}</li>
         {% endfor %}
     </ul>
+</div>
+<p>--------------------------------</p>
+
+<br>
+<p> pagination 测试 </p>
+<div class=pagination>
+    <ul>
+        {% for dog in pagination.items %}
+            <li>{{ dog.a_name }}</li>
+        {% endfor %}
+    </ul>
+    {% for page in pagination.iter_pages() %}
+        {% if page %}
+            {% if page != pagination.page %}
+                {#            <a href="{{ url_for('db.paginationep', page=page) }}">{{ page }}</a>#}
+                <a href="{{ url_for('db.get_dogs_paginate', per_page=per_page, page=page) }}">{{ page }}</a>
+                {#            <a href="{{ url_for('db.get_dogs_paginate') }}?page={{ page }}&per_page={{ per_page }}">{{ page }}</a>#}
+                {#            <a href="#">{{ page }}</a>#}
+            {% else %}
+                <strong>{{ page }}</strong>
+            {% endif %}
+        {% else %}
+            <span class=ellipsis>…</span>
+        {% endif %}
+    {% endfor %}
+</div>
 </body>
 </html>

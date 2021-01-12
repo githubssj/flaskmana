@@ -1,12 +1,24 @@
 # from flask_sqlalchemy import SQLAlchemy
 #
 # db = SQLAlchemy()
+from flask_caching import Cache
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy as BaseSQLAlchemy
 from contextlib import contextmanager
 from sqlalchemy.exc import IntegrityError
 from redis import Redis
+
+"""
+配置区
+"""
+# flask-caching 配置
+flaskcaching_config = {
+    "DEBUG": True,  # some Flask specific configs
+    "CACHE_TYPE": "redis",  # Flask-Caching related configs  : simple redis
+    "CACHE_DEFAULT_TIMEOUT": 300
+}
+cache = Cache(config=flaskcaching_config)
 
 
 # 自定义一个SQLAlchemy继承flask_sqlalchemy的,方便自定义方法！！！ 为了失败回滚
@@ -47,3 +59,4 @@ def init_exts(app):
     db.init_app(app=app)
     Session(app)
     DebugToolbarExtension(app=app)
+    cache.init_app(app=app)

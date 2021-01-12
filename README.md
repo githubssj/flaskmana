@@ -52,3 +52,18 @@ SQLALCHEMY_MAX_OVERFLOW	控制在连接池达到最大值后可以创建的连�
 SQLALCHEMY_TRACK_MODIFICATIONS	如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。这需要额外的内存， 如果不必要的可以禁用它。  
 
 # return render_template("getcats.html", **locals())  # **local() 将所有参数传出  
+
+
+# cache flask-cache(flask1.0以下可用)  
+相同结果集查询从cache中取  
+# flask-caching 1.0以上版本可用
+    config = {
+        "DEBUG": True,          # some Flask specific configs
+        "CACHE_TYPE": "simple", # Flask-Caching related configs
+        "CACHE_DEFAULT_TIMEOUT": 300
+    }  
+    cache = Cache(config={'CACHE_TYPE': 'simple'})  
+    cache.init_app(app)  
+    @cache.cached(timeout=50)  
+    def index():  
+        return render_template('index.html')  
