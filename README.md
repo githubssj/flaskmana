@@ -85,5 +85,54 @@ app 和 蓝图 都有
         使用config
         current_app.config 一定是在项目启动之后用  import flask.current_app  
 
+# flask-restful  
+/hello/的地址
+post 请求 /hello 这时会报 301 问题  
+解决:  restapi.add_resource(HelloResource, "/helloapi/", strict_slashes = False)  
+在addresource 添加 strict_slashes = False  
+  
+# 输出   
+- 输出默认字典: 可以直接进行序列化
+- 输出包含对象:  
+    -默认会抛出异常,对象不可json序列化  
+    使用格式化工具: mashal 函数   
+    mashal_with  装饰器  
+    条件:  
+        格式:
+            字典格式,允许嵌套  
+            value是fields.xxx fields.Nest  
+        数据:  
+            允许任何格式, 但是要根据模板定制  
+        如果格式与数据完全对应,数据就是预格式  
+        如果格式比数据字段多, 依然正常输出, 但是不存在的值为默认值 
+        如果格式比数据字段少, 依然正常输出, 少的字段不显示  
+    结论: 想要什么样的格式数据, 模板就是一样的格式, 与传入的数据关系不大  
+  添加输出名: 与原数据库名不一致, 对外显示名 = fields.String(attribute="数据字段名")  
+  这里的就是显示的名字 
+          
+# 数值交换
+    python  
+    1. a, b = b, a  
+    2. temp =a a = b  b = temp  
+    3. ^  异或 不同为1 相同为0  
+         a = a^ b  
+         b = a ^ b
+         a = a ^ b  
+    
+    linux 权限
+    十位 第一位类型 后9位每3位一组  
+    用户  
+    用户所在组  
+    其他用户(组)   
+    每一组  
+    r  4 100  读权限  
+    w  2 010  写权限  
+    x  1 001  执行权限  
+    例 5 : 101 
+    权限匹配用 & 与   
+    方便数据清洗: 按位与  
+    同为1则1 其他为0    
+    101 & 001 有执行权限   
         
+         
         

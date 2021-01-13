@@ -9,6 +9,8 @@ from contextlib import contextmanager
 from sqlalchemy.exc import IntegrityError
 from redis import Redis
 
+from apps.api import restapi
+
 """
 配置区
 """
@@ -30,15 +32,22 @@ class SQLAlchemy(BaseSQLAlchemy):
         try:
             yield
             self.session.commit()
+            return True
         except IntegrityError as ie:
             # 加入数据库commit提交失败，必须回滚！！！
             self.session.rollback()
             # self.session.remove()  # 这个使用要注意
+            print("error: ", ie)
             print("数据commit失败!---------auto_commit_db")
-            raise ie
+            return False
+            # raise ie
             # return ie
         finally:
             self.session.close()
+
+    def add_db_data(self):
+        with self.auto_commit_db():
+            self.session.add()
 
 
 db = SQLAlchemy()
@@ -60,3 +69,4 @@ def init_exts(app):
     Session(app)
     DebugToolbarExtension(app=app)
     cache.init_app(app=app)
+    restapi.init_app(app=app)
