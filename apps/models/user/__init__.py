@@ -1,1 +1,2 @@
-# models/user
+# # models/user
+from .myuser import MyUser

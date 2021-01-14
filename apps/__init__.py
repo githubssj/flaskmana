@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, g
 
+from apps.apis import apis_init_app
 from exts import init_exts
 from settings import config_map
 from apps.views import index_bp, init_view
@@ -18,6 +19,8 @@ def create_app(config_name=config_map.get('develop')):
     app = Flask(__name__, template_folder='../template')
     # 设置flask的配置
     app.config.from_object(config_name)
+
+
     # print(app.config)
     # db与app的初始化
     # db.init_app(app=app)
@@ -26,6 +29,7 @@ def create_app(config_name=config_map.get('develop')):
     init_exts(app)
     # 初始化views 懒加载app的方式
     init_view(app=app)
+    apis_init_app(app=app)
 
     # # 注册蓝图, 这些功能放到views中的init 懒加载app
     # app.register_blueprint(index_bp)

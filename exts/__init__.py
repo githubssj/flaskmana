@@ -3,13 +3,13 @@
 # db = SQLAlchemy()
 from flask_caching import Cache
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_jwt_extended import JWTManager
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy as BaseSQLAlchemy
 from contextlib import contextmanager
 from sqlalchemy.exc import IntegrityError
-from redis import Redis
+from redis import Redis  # 使用redis保留
 
-from apps.api import restapi
 
 """
 配置区
@@ -21,7 +21,7 @@ flaskcaching_config = {
     "CACHE_DEFAULT_TIMEOUT": 300
 }
 cache = Cache(config=flaskcaching_config)
-
+jwt = JWTManager()
 
 # 自定义一个SQLAlchemy继承flask_sqlalchemy的,方便自定义方法！！！ 为了失败回滚
 class SQLAlchemy(BaseSQLAlchemy):
@@ -29,6 +29,10 @@ class SQLAlchemy(BaseSQLAlchemy):
     # 利用contextmanager管理器,对try/except语句封装，使用的时候必须和with结合！！！
     @contextmanager
     def auto_commit_db(self):
+        """
+        暂时不用
+        :return:
+        """
         try:
             yield
             self.session.commit()
@@ -45,9 +49,6 @@ class SQLAlchemy(BaseSQLAlchemy):
         finally:
             self.session.close()
 
-    def add_db_data(self):
-        with self.auto_commit_db():
-            self.session.add()
 
 
 db = SQLAlchemy()
@@ -59,6 +60,10 @@ db = SQLAlchemy()
 
 class My_op_db_data:
     def add_db_data(self):
+        """
+        暂时不用
+        :return:
+        """
         with db.auto_commit_db():
             db.session.add(self)
 
@@ -66,7 +71,10 @@ class My_op_db_data:
 # 初始化 扩展
 def init_exts(app):
     db.init_app(app=app)
+    jwt.init_app(app=app)
     Session(app)
     DebugToolbarExtension(app=app)
     cache.init_app(app=app)
-    restapi.init_app(app=app)
+
+
+

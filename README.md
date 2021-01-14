@@ -101,6 +101,7 @@ post 请求 /hello 这时会报 301 问题
         格式:
             字典格式,允许嵌套  
             value是fields.xxx fields.Nest  
+            fields.List(fields.Nested(xx_fields))
         数据:  
             允许任何格式, 但是要根据模板定制  
         如果格式与数据完全对应,数据就是预格式  

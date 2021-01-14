@@ -1,0 +1,7 @@
+HTTP_OK = 200
+HTTP_CREATE_OK = 201
+
+# 登录
+USER_ACTION_LOGIN = "login"
+# 注册
+USER_ACTION_REGISTER = "register"
