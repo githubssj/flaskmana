@@ -39,6 +39,7 @@ class Config:
     # SESSION_REDIS = redis.Redis(host='127.0.0.1', port='6379')  # 用于连接redis的配置
     # jwt 配置
     JWT_SECRET_KEY = "super-secret"
+    PROPAGATE_EXCEPTIONS = True
 
 
 # 开发环境
